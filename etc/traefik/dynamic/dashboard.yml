@@ -1,0 +1,9 @@
+http:
+  routers:
+    dashboard:
+      entryPoints:
+        - https
+      rule: Host(`traefik.**DOMAIN**.com`)
+      service: api@internal # Don't change
+      tls:
+        certresolver: letsEncrypt
