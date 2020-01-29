@@ -1,0 +1,22 @@
+entryPoints:
+  http:
+    address: :80
+  https:
+    address: :443
+
+certificatesResolvers:
+  letsEncrypt:
+    acme:
+      email: email@email.com
+    storage: /etc/traefik/acme/acme.json
+    dnsChallenge:
+      provider: cloudflare
+      delayBeforeCheck: 0
+
+providers:
+  docker:
+    endpoint: unix:///var/run/docker.sock
+    exposedByDefault: false
+  file:
+    directory: /etc/traefik/dynamic
+   
